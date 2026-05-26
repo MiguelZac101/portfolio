@@ -2,7 +2,7 @@
     {
         "title": "Dota 2 Hero Quiz",
         "desc": "A quiz game built with React and TypeScript where you guess Dota 2 heroes. Features a global leaderboard powered by Supabase, country flags, and round tracking.",
-        "image": "public/projects/dota2-quiz.webp",
+        "image": "/projects/dota2-quiz.webp",
         "demo": "https://dota2-quiz.vercel.app/",
         "repo": "https://github.com/MiguelZac101/dota2-quiz",
         "tech": [
