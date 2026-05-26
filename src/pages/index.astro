@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import projects from "../data/projects.json";
+---
+
+<Layout title="Edwin | Frontend Developer">
+    <main class="min-h-screen">
+        <div
+            class="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-8 lg:gap-16 px-6 py-12 lg:py-24"
+        >
+            <Sidebar />
+
+            <section class="space-y-8">
+                <h2 class="text-2xl font-bold tracking-tight">Proyectos</h2>
+                <div class="space-y-6">
+                    {projects.map((project) => <ProjectCard {...project} />)}
+                </div>
+
+                <footer class="pt-12 text-xs text-zinc-600">
+                    Hecho con Astro. <a
+                        href="https://github.com/tu-user/portfolio"
+                        target="_blank"
+                        class="underline hover:text-zinc-400">Ver código</a
+                    >
+                </footer>
+            </section>
+        </div>
+    </main>
+</Layout>

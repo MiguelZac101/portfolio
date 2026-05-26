@@ -1,0 +1,55 @@
+---
+interface Props {
+    title: string;
+    desc: string;
+    image: string;
+    demo: string;
+    repo: string;
+    tech: string[];
+}
+
+const { title, desc, image, demo, repo, tech } = Astro.props;
+---
+
+<article
+    class="group border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors"
+>
+    <img
+        src={image}
+        alt={`Screenshot de ${title}`}
+        class="rounded-lg mb-5 aspect-video object-cover bg-zinc-900"
+        loading="lazy"
+    />
+
+    <h3 class="text-xl font-semibold mb-2">{title}</h3>
+    <p class="text-zinc-400 mb-4 text-sm leading-relaxed">{desc}</p>
+
+    <div class="flex flex-wrap gap-2 mb-5">
+        {
+            tech.map((t) => (
+                <span class="text-xs bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-md text-zinc-300">
+                    {t}
+                </span>
+            ))
+        }
+    </div>
+
+    <div class="flex gap-5">
+        <a
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors"
+        >
+            Live Demo →
+        </a>
+        <a
+            href={repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors"
+        >
+            Código →
+        </a>
+    </div>
+</article>

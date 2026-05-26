@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Dota 2 Hero Quiz",
+        "desc": "Quiz de héroes de Dota 2 con ranking global en tiempo real, sistema de rachas con feedback háptico y sonoro. UI animada con Framer Motion.",
+        "image": "/dota-quiz.webp",
+        "demo": "https://tu-user.github.io/dota-hero-quiz",
+        "repo": "https://github.com/tu-user/dota-hero-quiz",
+        "tech": [
+            "React",
+            "TypeScript",
+            "Supabase",
+            "Tailwind CSS"
+        ]
+    },
+    {
+        "title": "App de Tareas",
+        "desc": "Todo app con autenticación, drag & drop y persistencia en la nube. Dark mode y diseño responsive.",
+        "image": "/todo-app.webp",
+        "demo": "https://todo-app.vercel.app",
+        "repo": "https://github.com/tu-user/todo-app",
+        "tech": [
+            "React",
+            "Firebase",
+            "CSS Modules"
+        ]
+    }
+]
