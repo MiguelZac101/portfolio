@@ -25,95 +25,146 @@ const items: JourneyItem[] = journey;
     <h2 class="text-2xl font-bold tracking-tight">React Journey</h2>
 
     <div class="relative">
-        <!-- Línea vertical central -->
-        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-800 -translate-x-1/2"></div>
 
-        <div class="space-y-12">
-            {items.map((item, i) => {
-                const isLeft = i % 2 === 0;
-                return (
-                    <div class="relative grid grid-cols-[1fr_auto_1fr] items-start gap-4">
-                        
-                        <!-- Columna izquierda -->
-                        <div class={`${isLeft ? '' : 'invisible'}`}>
-                            {isLeft && (
-                                <div class="border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
-                                    <p class="text-xs text-zinc-500 mb-2">{item.date}</p>
-                                    <h3 class="text-base font-semibold mb-1">{item.title}</h3>
-                                    <p class="text-zinc-400 text-xs leading-relaxed mb-3">{item.description}</p>
-                                    <a href={item.resource_url} target="_blank" rel="noopener noreferrer" class="block group">
-                                        <img
-                                            src={item.image}
-                                            alt={item.resource_label}
-                                            class="w-full rounded-lg object-cover mb-2 group-hover:opacity-80 transition-opacity"
-                                        />
-                                        <p class="text-xs text-zinc-400 group-hover:text-white transition-colors">{item.resource_label}</p>
-                                        <p class="text-xs text-zinc-600">{item.channel}</p>
-                                    </a>
-                                    {item.project && (
-                                        <div class="mt-3 pt-3 border-t border-zinc-800">
-                                            <div class="flex items-center gap-1 text-xs text-zinc-500 mb-1">
-                                                <span>↓</span>
-                                                <span>Proyecto generado</span>
-                                            </div>
-                                            <a
-                                                href={item.project.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="text-xs font-medium text-white underline underline-offset-4 hover:text-zinc-300 transition-colors"
-                                            >
-                                                {item.project.label} →
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-
-                        <!-- Punto central -->
-                        <div class="flex flex-col items-center pt-4">
-                            <div class="w-3 h-3 rounded-full bg-white border-2 border-zinc-900 ring-2 ring-zinc-700 z-10"></div>
-                        </div>
-
-                        <!-- Columna derecha -->
-                        <div class={`${!isLeft ? '' : 'invisible'}`}>
-                            {!isLeft && (
-                                <div class="border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
-                                    <p class="text-xs text-zinc-500 mb-2">{item.date}</p>
-                                    <h3 class="text-base font-semibold mb-1">{item.title}</h3>
-                                    <p class="text-zinc-400 text-xs leading-relaxed mb-3">{item.description}</p>
-                                    <a href={item.resource_url} target="_blank" rel="noopener noreferrer" class="block group">
-                                        <img
-                                            src={item.image}
-                                            alt={item.resource_label}
-                                            class="w-full rounded-lg object-cover mb-2 group-hover:opacity-80 transition-opacity"
-                                        />
-                                        <p class="text-xs text-zinc-400 group-hover:text-white transition-colors">{item.resource_label}</p>
-                                        <p class="text-xs text-zinc-600">{item.channel}</p>
-                                    </a>
-                                    {item.project && (
-                                        <div class="mt-3 pt-3 border-t border-zinc-800">
-                                            <div class="flex items-center gap-1 text-xs text-zinc-500 mb-1">
-                                                <span>↓</span>
-                                                <span>Proyecto generado</span>
-                                            </div>
-                                            <a
-                                                href={item.project.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="text-xs font-medium text-white underline underline-offset-4 hover:text-zinc-300 transition-colors"
-                                            >
-                                                {item.project.label} →
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-
+        <!-- MOBILE: línea a la izquierda, una columna -->
+        <div class="lg:hidden">
+            {items.map((item) => (
+                <div class="relative flex gap-4">
+                    <!-- Línea y punto -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-3 h-3 rounded-full bg-white border-2 border-zinc-900 ring-2 ring-zinc-700 z-10 mt-4 shrink-0"></div>
+                        <div class="w-px bg-zinc-800 flex-1 mt-1"></div>
                     </div>
-                );
-            })}
+                    <!-- Card -->
+                    <div class="pb-10 flex-1">
+                        <div class="border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
+                            <p class="text-xs text-zinc-500 mb-2">{item.date}</p>
+                            <h3 class="text-base font-semibold mb-1">{item.title}</h3>
+                            <p class="text-zinc-400 text-xs leading-relaxed mb-3">{item.description}</p>
+                            <a href={item.resource_url} target="_blank" rel="noopener noreferrer" class="block group">
+                                <img
+                                    src={item.image}
+                                    alt={item.resource_label}
+                                    class="w-full rounded-lg object-cover mb-2 group-hover:opacity-80 transition-opacity"
+                                />
+                                <p class="text-xs text-zinc-400 group-hover:text-white transition-colors">{item.resource_label}</p>
+                                <p class="text-xs text-zinc-600">{item.channel}</p>
+                            </a>
+                            {item.project && (
+                                <div class="mt-3 pt-3 border-t border-zinc-800">
+                                    <div class="flex items-center gap-1 text-xs text-zinc-500 mb-1">
+                                        <span>↓</span>
+                                        <span>Proyecto generado</span>
+                                    </div>
+                                    <a
+                                        href={item.project.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-xs font-medium text-white underline underline-offset-4 hover:text-zinc-300 transition-colors"
+                                    >
+                                        {item.project.label} →
+                                    </a>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
         </div>
+
+        <!-- DESKTOP: alternado izquierda/derecha -->
+        <div class="hidden lg:block">
+            <!-- Línea vertical central -->
+            <div class="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-800 -translate-x-1/2"></div>
+
+            <div class="space-y-12">
+                {items.map((item, i) => {
+                    const isLeft = i % 2 === 0;
+                    return (
+                        <div class="relative grid grid-cols-[1fr_auto_1fr] items-start gap-4">
+
+                            <!-- Columna izquierda -->
+                            <div>
+                                {isLeft && (
+                                    <div class="border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
+                                        <p class="text-xs text-zinc-500 mb-2">{item.date}</p>
+                                        <h3 class="text-base font-semibold mb-1">{item.title}</h3>
+                                        <p class="text-zinc-400 text-xs leading-relaxed mb-3">{item.description}</p>
+                                        <a href={item.resource_url} target="_blank" rel="noopener noreferrer" class="block group">
+                                            <img
+                                                src={item.image}
+                                                alt={item.resource_label}
+                                                class="w-full rounded-lg object-cover mb-2 group-hover:opacity-80 transition-opacity"
+                                            />
+                                            <p class="text-xs text-zinc-400 group-hover:text-white transition-colors">{item.resource_label}</p>
+                                            <p class="text-xs text-zinc-600">{item.channel}</p>
+                                        </a>
+                                        {item.project && (
+                                            <div class="mt-3 pt-3 border-t border-zinc-800">
+                                                <div class="flex items-center gap-1 text-xs text-zinc-500 mb-1">
+                                                    <span>↓</span>
+                                                    <span>Proyecto generado</span>
+                                                </div>
+                                                <a
+                                                    href={item.project.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="text-xs font-medium text-white underline underline-offset-4 hover:text-zinc-300 transition-colors"
+                                                >
+                                                    {item.project.label} →
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
+                            <!-- Punto central -->
+                            <div class="flex flex-col items-center pt-4">
+                                <div class="w-3 h-3 rounded-full bg-white border-2 border-zinc-900 ring-2 ring-zinc-700 z-10"></div>
+                            </div>
+
+                            <!-- Columna derecha -->
+                            <div>
+                                {!isLeft && (
+                                    <div class="border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
+                                        <p class="text-xs text-zinc-500 mb-2">{item.date}</p>
+                                        <h3 class="text-base font-semibold mb-1">{item.title}</h3>
+                                        <p class="text-zinc-400 text-xs leading-relaxed mb-3">{item.description}</p>
+                                        <a href={item.resource_url} target="_blank" rel="noopener noreferrer" class="block group">
+                                            <img
+                                                src={item.image}
+                                                alt={item.resource_label}
+                                                class="w-full rounded-lg object-cover mb-2 group-hover:opacity-80 transition-opacity"
+                                            />
+                                            <p class="text-xs text-zinc-400 group-hover:text-white transition-colors">{item.resource_label}</p>
+                                            <p class="text-xs text-zinc-600">{item.channel}</p>
+                                        </a>
+                                        {item.project && (
+                                            <div class="mt-3 pt-3 border-t border-zinc-800">
+                                                <div class="flex items-center gap-1 text-xs text-zinc-500 mb-1">
+                                                    <span>↓</span>
+                                                    <span>Proyecto generado</span>
+                                                </div>
+                                                <a
+                                                    href={item.project.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="text-xs font-medium text-white underline underline-offset-4 hover:text-zinc-300 transition-colors"
+                                                >
+                                                    {item.project.label} →
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+
     </div>
 </section>
