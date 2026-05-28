@@ -4,52 +4,134 @@ interface Props {
     desc: string;
     image: string;
     demo: string;
+    loom_id: string;
     repo: string;
     tech: string[];
 }
-
-const { title, desc, image, demo, repo, tech } = Astro.props;
+const { title, desc, image, demo, loom_id, repo, tech } = Astro.props;
+const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
 ---
-
-<article
-    class="group border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors"
->
+<article class="group border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors">
     <img
         src={image}
         alt={`Screenshot de ${title}`}
         class="rounded-lg mb-5 object-cover bg-zinc-900"
         loading="lazy"
     />
-
     <h3 class="text-xl font-semibold mb-2">{title}</h3>
     <p class="text-zinc-400 mb-4 text-sm leading-relaxed">{desc}</p>
-
     <div class="flex flex-wrap gap-2 mb-5">
-        {
-            tech.map((t) => (
-                <span class="text-xs bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-md text-zinc-300">
-                    {t}
-                </span>
-            ))
-        }
+        {tech.map((t) => (
+            <span class="text-xs bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-md text-zinc-300">
+                {t}
+            </span>
+        ))}
     </div>
-
     <div class="flex gap-5">
-        <a
-            href={demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors"
-        >
-            Live Demo →
+        {demo && (
+            <a href={demo} target="_blank" rel="noopener noreferrer"
+                class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors">
+                Live Demo →
+            </a>
+        )}
+        <a href={repo} target="_blank" rel="noopener noreferrer"
+            class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors">
+            GitHub →
         </a>
-        <a
-            href={repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors"
-        >
-            Código →
-        </a>
+        {loom_id && (
+            <button
+                data-modal={modalId}
+                class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors cursor-pointer">
+                Preview →
+            </button>
+        )}
     </div>
 </article>
+
+<!-- Modal -->
+{loom_id && (
+    <div id={modalId} class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center !mt-0">
+        <div class="relative w-full max-w-5xl mx-4">
+    <button data-close={modalId} class="absolute -top-8 right-0 text-white text-sm">
+        ✕ Cerrar
+    </button>
+    
+
+    <!-- Contenedor con altura fija -->
+    <div class="relative w-full aspect-video">
+        
+        <!-- Skeleton -->
+        <div class="loading-spinner absolute inset-0 rounded-lg bg-zinc-800 animate-pulse flex items-center justify-center">
+            <div class="w-12 h-12 border-4 border-zinc-600 border-t-white rounded-full animate-spin" />
+        </div>
+
+        <!-- Iframe -->
+        <iframe
+            data-src={`https://www.loom.com/embed/${loom_id}`}
+            frameborder="0"
+            allowfullscreen
+            class="absolute inset-0 w-full h-full rounded-lg opacity-0 transition-opacity duration-300"
+        />
+    </div>
+</div>
+    </div>
+)}
+
+<script>
+    document.querySelectorAll('[data-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-modal')!
+            const modal = document.getElementById(id)!
+            const iframe = modal.querySelector('iframe')!
+
+            abrirModal(id)
+            
+            iframe.src = iframe.dataset.src!
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+        })
+    })
+
+    document.querySelectorAll('[data-close]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-close')!
+            cerrarModal(id)
+        })
+    })
+
+    document.querySelectorAll('[data-modal]').forEach((btn) => {
+        const id = btn.getAttribute('data-modal')!
+        const modal = document.getElementById(id)!
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) cerrarModal(id)
+        })
+    })
+
+    function cerrarModal(id:string) {
+        const modal = document.getElementById(id)!
+        const iframe = modal.querySelector('iframe')!
+        iframe.src = ''
+        modal.classList.add('hidden')
+        modal.classList.remove('flex')
+    }
+
+    function abrirModal(id: string) {
+        const modal = document.getElementById(id)!
+        const iframe = modal.querySelector('iframe')!
+        const spinner = modal.querySelector('.loading-spinner') as HTMLElement
+
+        iframe.src = iframe.dataset.src!
+        modal.classList.remove('hidden')
+        modal.classList.add('flex')
+
+        // mostrar spinner, ocultar iframe
+        spinner.classList.remove('hidden')
+        iframe.classList.add('opacity-0')
+
+        // cuando carga el iframe
+        iframe.addEventListener('load', () => {
+            spinner.classList.add('hidden')
+            iframe.classList.remove('opacity-0')
+        }, { once: true })
+    }
+</script>

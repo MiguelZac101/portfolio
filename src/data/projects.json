@@ -5,11 +5,27 @@
         "image": "/projects/dota2-quiz.webp",
         "demo": "https://dota2-quiz.vercel.app/",
         "repo": "https://github.com/MiguelZac101/dota2-quiz",
+        "loom_id" : "32230ddd2dc74765a93cc0314b8167ca",
         "tech": [
             "React",
             "TypeScript",
             "Supabase",
             "Tailwind CSS"
+        ]
+    },   
+    {
+        "title": "Disfrutones",
+        "desc": "A custom WordPress theme built from scratch, designed with a clean and modern aesthetic. The theme uses Lazy Blocks to create reusable Gutenberg blocks, allowing flexible page composition without relying on page builders.",
+        "image": "/projects/disfrutones.webp",
+        "demo": "",
+        "repo": "https://github.com/MiguelZac101/disfrutones",
+        "loom_id" : "109daf18665348dab8e4ef4dd514329a",
+        "tech": [
+            "PHP",
+            "Wordpress",
+            "CSS",
+            "Javascript",
+            "lazy-blocks"
         ]
     }    
 ]
