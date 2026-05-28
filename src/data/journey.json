@@ -1,0 +1,46 @@
+[
+    {
+        "date": "Marzo 2025",
+        "title": "Tailwind CSS",
+        "description": "Utility-first CSS framework para construir interfaces modernas sin salir del HTML.",
+        "image": "https://img.youtube.com/vi/5HtRcMSO1Ro/maxresdefault.jpg",
+        "resource_url": "https://www.youtube.com/watch?v=5HtRcMSO1Ro",
+        "resource_label": "Aprende Tailwind CSS - Curso Completo",
+        "channel": "freeCodeCamp Español",
+        "project": null
+    },
+    {
+        "date": "Marzo 2025",
+        "title": "TypeScript",
+        "description": "Tipado estático para JavaScript. Dos videos del curso intensivo de novato a ninja.",
+        "image": "https://img.youtube.com/vi/fUgxxhI_bvc/maxresdefault.jpg",
+        "resource_url": "https://www.youtube.com/watch?v=fUgxxhI_bvc&list=PLUofhDIg_38pNCZe9ptj72exbFjzyePxT",
+        "resource_label": "De Novato a Ninja: Aprende TypeScript",
+        "channel": "midulive",
+        "project": null
+    },
+    {
+        "date": "Abril 2025",
+        "title": "React",
+        "description": "De cero a experto. Componentes, hooks, estado, efectos y el ecosistema React completo.",
+        "image": "https://img.youtube.com/vi/GMnWXlJnbNo/maxresdefault.jpg",
+        "resource_url": "https://www.youtube.com/watch?v=GMnWXlJnbNo",
+        "resource_label": "REACT curso de 0 a EXPERTO 2025",
+        "channel": "Gentleman Programming",
+        "project": {
+            "label": "Dota 2 Hero Quiz",
+            "url": "https://dota2-quiz.vercel.app",
+            "repo": "https://github.com/MiguelZac101/dota2-quiz"
+        }
+    },
+    {
+        "date": "Mayo 2025",
+        "title": "Next.js 14",
+        "description": "App Router, Server Components, rutas, layouts, metadata y API REST con Next.js.",
+        "image": "https://img.youtube.com/vi/r5fkL5_rB70/maxresdefault.jpg",
+        "resource_url": "https://www.youtube.com/watch?v=r5fkL5_rB70",
+        "resource_label": "Curso Next.js",
+        "channel": "jonmircha",
+        "project": null
+    }
+]

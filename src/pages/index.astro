@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Sidebar from "../components/Sidebar.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import projects from "../data/projects.json";
+import ReactJourney from "../components/ReactJourney.astro";
 ---
 
 <Layout title="Miguel Zack | Full Stack Developer — PHP, wordpress, Laravel and React">
@@ -17,6 +18,10 @@ import projects from "../data/projects.json";
                 <div class="space-y-6">
                     {projects.map((project) => <ProjectCard {...project} />)}
                 </div>
+                
+                
+                <ReactJourney />
+                
 
                 <footer class="pt-12 text-xs text-zinc-600">
                     Made with Astro. <a
@@ -25,7 +30,12 @@ import projects from "../data/projects.json";
                         class="underline hover:text-zinc-400">View code</a
                     >
                 </footer>
+
+                
             </section>
+
+            
+
         </div>
     </main>
 </Layout>
