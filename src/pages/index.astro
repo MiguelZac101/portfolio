@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Sidebar from "../components/Sidebar.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import projects from "../data/projects.json";
+
 import ReactJourney from "../components/ReactJourney.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <Layout title="Miguel Zack | Full Stack Developer — PHP, wordpress, Laravel and React">
@@ -14,11 +14,8 @@ import ReactJourney from "../components/ReactJourney.astro";
             <Sidebar />
 
             <section class="space-y-8">
-                <h2 class="text-2xl font-bold tracking-tight">Projects</h2>
-                <div class="space-y-6">
-                    {projects.map((project) => <ProjectCard {...project} />)}
-                </div>
                 
+                <Projects />
                 
                 <ReactJourney />
                 
