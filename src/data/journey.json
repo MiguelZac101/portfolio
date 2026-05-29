@@ -1,6 +1,6 @@
 [
     {
-        "date": "Marzo 2025",
+        "date": "Marzo 2026",
         "title": "Tailwind CSS",
         "description": "Utility-first CSS framework para construir interfaces modernas sin salir del HTML.",
         "image": "https://img.youtube.com/vi/5HtRcMSO1Ro/maxresdefault.jpg",
@@ -10,7 +10,7 @@
         "project": null
     },
     {
-        "date": "Marzo 2025",
+        "date": "Marzo 2026",
         "title": "TypeScript",
         "description": "Tipado estático para JavaScript. Dos videos del curso intensivo de novato a ninja.",
         "image": "https://img.youtube.com/vi/fUgxxhI_bvc/maxresdefault.jpg",
@@ -20,7 +20,7 @@
         "project": null
     },
     {
-        "date": "Abril 2025",
+        "date": "Abril 2026",
         "title": "React",
         "description": "De cero a experto. Componentes, hooks, estado, efectos y el ecosistema React completo.",
         "image": "https://img.youtube.com/vi/GMnWXlJnbNo/maxresdefault.jpg",
@@ -34,7 +34,7 @@
         }
     },
     {
-        "date": "Mayo 2025",
+        "date": "Mayo 2026",
         "title": "Next.js 14",
         "description": "App Router, Server Components, rutas, layouts, metadata y API REST con Next.js.",
         "image": "https://img.youtube.com/vi/r5fkL5_rB70/maxresdefault.jpg",
@@ -42,5 +42,16 @@
         "resource_label": "Curso Next.js",
         "channel": "jonmircha",
         "project": null
+    },
+    {
+        "date": "Mayo 2026",
+        "title": "Next.js — Official Tutorial",
+        "description": "Building a full-stack dashboard app following the official Next.js documentation. Covers App Router, Server Components, authentication, database integration and more.",
+        "image": "/react-journey/nextjs-official.png",
+        "resource_url": "https://nextjs.org/learn/dashboard-app",
+        "resource_label": "Next.js Official Tutorial — Dashboard App",
+        "channel": "nextjs.org",
+        "project": null,
+        "in_progress": true
     }
 ]

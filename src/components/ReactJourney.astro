@@ -16,6 +16,7 @@ interface JourneyItem {
     resource_label: string;
     channel: string;
     project: Project | null;
+    in_progress?: boolean;
 }
 
 const items: JourneyItem[] = journey;
@@ -23,7 +24,7 @@ const items: JourneyItem[] = journey;
 
 <section id="react-journey" class="space-y-8">
     <h2 class="text-2xl font-bold tracking-tight">React Journey</h2>
-
+    
     <div class="relative">
 
         <!-- MOBILE: línea a la izquierda, una columna -->
@@ -37,8 +38,13 @@ const items: JourneyItem[] = journey;
                     </div>
                     <!-- Card -->
                     <div class="pb-10 flex-1">
-                        <div class="border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
+                        <div class="relative border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
                             <p class="text-xs text-zinc-500 mb-2">{item.date}</p>
+                            {item.in_progress && (
+                                <span class="absolute top-4 right-4 text-xs bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 px-2 py-0.5 rounded-full">
+                                    In progress
+                                </span>
+                            )}
                             <h3 class="text-base font-semibold mb-1">{item.title}</h3>
                             <p class="text-zinc-400 text-xs leading-relaxed mb-3">{item.description}</p>
                             <a href={item.resource_url} target="_blank" rel="noopener noreferrer" class="block group">
@@ -86,8 +92,13 @@ const items: JourneyItem[] = journey;
                             <!-- Columna izquierda -->
                             <div>
                                 {isLeft && (
-                                    <div class="border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
+                                    <div class="relative border border-zinc-800 rounded-xl p-4 hover:border-zinc-700 transition-colors">
                                         <p class="text-xs text-zinc-500 mb-2">{item.date}</p>
+                                        {item.in_progress && (
+                                            <span class="absolute top-4 right-4 text-xs bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 px-2 py-0.5 rounded-full">
+                                                In progress
+                                            </span>
+                                        )}
                                         <h3 class="text-base font-semibold mb-1">{item.title}</h3>
                                         <p class="text-zinc-400 text-xs leading-relaxed mb-3">{item.description}</p>
                                         <a href={item.resource_url} target="_blank" rel="noopener noreferrer" class="block group">
