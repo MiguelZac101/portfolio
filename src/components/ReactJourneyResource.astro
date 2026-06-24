@@ -1,0 +1,27 @@
+---
+import type { JourneyItem } from "../types/index.ts";
+import ReactJourneyCard from "./ReactJourneyCard.astro";
+import ReactJourneyProjectGenerate from "./ReactJourneyProjectGenerate.astro"
+
+interface Props {
+    item: JourneyItem;
+}
+const { item } = Astro.props;
+---
+
+<ReactJourneyCard item={item} />
+
+{
+    item.project && (
+        <div class="pt-3 mt-3">
+            <div class="flex flex-col items-center justify-center gap-1 text-lg">
+                <div>↓</div>  
+                <div class="flex items-center gap-1 mb-1 text-xs text-zinc-500">                
+                    <span>Proyecto generado</span>
+                </div>              
+            </div>            
+
+            <ReactJourneyProjectGenerate project={item.project} />
+        </div>
+    )
+}

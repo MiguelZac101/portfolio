@@ -28,8 +28,9 @@
         "resource_label": "REACT curso de 0 a EXPERTO 2025",
         "channel": "Gentleman Programming",
         "project": {
-            "label": "Dota 2 Hero Quiz",
+            "title": "Dota 2 Hero Quiz",
             "url": "https://dota2-quiz.vercel.app",
+            "image" : "/react-journey/project-generate/dota2-quiz.webp",
             "repo": "https://github.com/MiguelZac101/dota2-quiz"
         }
     },
@@ -51,9 +52,7 @@
         "resource_url": "https://nextjs.org/learn/dashboard-app",
         "resource_label": "Next.js Official Tutorial — Dashboard App",
         "channel": "nextjs.org",
-        "project": {
-            "label": "nextjs-dashboard",
-            "url": "",
+        "project": {                                   
             "repo": "https://github.com/MiguelZac101/nextjs-dashboard"
         }
     },{
@@ -65,8 +64,10 @@
         "resource_label": "Crea una Aplicación de Alquiler de Coches: Guía Paso a Paso con NextJS, React, Tailwind CSS y Stripe ",
         "channel": "TarreDev",
         "project": {
-            "label": "rental-cars-course",
+            "title": "App Alquiler de coches",
+            "description": "Crea una Aplicación de Alquiler de Coches: Guía Paso a Paso con NextJS, React, Tailwind CSS y Stripe",
             "url": "https://rental-cars-course-mz.vercel.app/",
+            "image" : "/react-journey/project-generate/rental-cars.webp",
             "repo": "https://github.com/MiguelZac101/rental-cars-course"
         }
     }

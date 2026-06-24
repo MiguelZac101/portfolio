@@ -1,0 +1,29 @@
+---
+import type { JourneyProjectGenerate } from "../types/index.ts";
+
+interface Props {
+	project: JourneyProjectGenerate;
+}
+const { project } = Astro.props;
+---
+
+<div class="relative p-4 transition-colors border border-zinc-800 rounded-xl hover:border-zinc-700">
+    {project.title && (
+        <h3 class="mb-1 text-base font-semibold">{project.title}</h3>
+    )}    
+    {project.url && (
+        <a
+		href={project.url}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="block group"
+	>
+		<img
+			src={project.image}
+			alt={project.title}
+			class="object-cover w-full mb-2 transition-opacity rounded-lg group-hover:opacity-80"
+		/>		
+	</a>
+     )}	
+    <a title="Repositorio del proyecto." href={project.repo} class="text-xs text-zinc-400">GitHub</a>
+</div>
