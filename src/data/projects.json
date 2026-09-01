@@ -1,5 +1,19 @@
 [
     {
+        "title": "Futbol Manager",
+        "desc": "Football Manager helps you organize lightning championships with date generation, rest days, results, reusable referees and pitches with location.",
+        "image": "/projects/futbol-manager.webp",
+        "demo": "https://futbol-manager-zack.vercel.app/",
+        "repo": "https://github.com/MiguelZac101/futbol-manager",
+        "loom_id" : "",
+        "tech": [
+            "React",
+            "Nextjs",   
+            "TypeScript",
+            "Tailwind CSS"
+        ]
+    },
+    {
         "title": "Dota 2 Hero Quiz",
         "desc": "A quiz game built with React and TypeScript where you guess Dota 2 heroes. Features a global leaderboard powered by Supabase, country flags, and round tracking.",
         "image": "/projects/dota2-quiz.webp",
