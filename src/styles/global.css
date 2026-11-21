@@ -37,9 +37,19 @@ body {
   color: var(--color-secondary);
 }
 
-.journey-card {
-  background: var(--color-secondary);
-  color: var(--color-primary);
+.portfolio-card {
+  background: transparent;
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  transition: border-color .2s;
+}
+
+.portfolio-card:hover {
+  border-color: var(--color-accent);
+}
+
+.project-card {
+  border-color: #537291;
 }
 
 .portfolio-footer {

@@ -11,18 +11,18 @@ interface Props {
 const { title, desc, image, demo, loom_id, repo, tech } = Astro.props;
 const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
 ---
-<article class="group border border-secondary-muted rounded-xl p-6 bg-secondary text-primary hover:border-accent transition-colors">
+<article class="group portfolio-card project-card border rounded-xl p-6">
     <img
         src={image}
         alt={`Screenshot de ${title}`}
-        class="rounded-lg mb-5 object-cover bg-secondary-muted"
+        class="rounded-lg mb-5 object-cover bg-primary"
         loading="lazy"
     />
     <h3 class="text-xl font-semibold mb-2">{title}</h3>
-    <p class="text-primary-muted mb-4 text-sm leading-relaxed">{desc}</p>
+    <p class="text-secondary mb-4 text-sm leading-relaxed">{desc}</p>
     <div class="flex flex-wrap gap-2 mb-5">
         {tech.map((t) => (
-            <span class="text-xs bg-secondary-muted border border-secondary-muted px-2.5 py-1 rounded-md text-primary">
+            <span class="text-xs bg-primary border border-secondary/20 px-2.5 py-1 rounded-md text-secondary">
                 {t}
             </span>
         ))}
@@ -30,18 +30,18 @@ const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
     <div class="flex gap-5">
         {demo && (
             <a href={demo} target="_blank" rel="noopener noreferrer"
-                class="text-primary text-sm font-medium underline underline-offset-4 decoration-accent hover:decoration-2 transition-all">
+                class="text-secondary text-sm font-medium underline underline-offset-4 decoration-accent hover:text-accent transition-colors">
                 Live Demo →
             </a>
         )}
         <a href={repo} target="_blank" rel="noopener noreferrer"
-            class="text-primary text-sm font-medium underline underline-offset-4 decoration-accent hover:decoration-2 transition-all">
+            class="text-secondary text-sm font-medium underline underline-offset-4 decoration-accent hover:text-accent transition-colors">
             GitHub →
         </a>
         {loom_id && (
             <button
                 data-modal={modalId}
-                class="text-primary text-sm font-medium underline underline-offset-4 decoration-accent hover:decoration-2 transition-all cursor-pointer">
+                class="text-secondary text-sm font-medium underline underline-offset-4 decoration-accent hover:text-accent transition-colors cursor-pointer">
                 Preview →
             </button>
         )}
