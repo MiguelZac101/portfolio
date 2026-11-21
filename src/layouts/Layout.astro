@@ -17,8 +17,75 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <style is:inline>
+      html {
+        background: #0B1F3A;
+      }
+
+      #page-loader {
+        display: none;
+      }
+
+      html.page-loading #page-content {
+        visibility: hidden;
+      }
+
+      html.page-loading #page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: #0B1F3A;
+        color: #F5F3EE;
+        font: 0.875rem system-ui, sans-serif;
+      }
+
+      .page-loader-spinner {
+        width: 2rem;
+        height: 2rem;
+        border: 3px solid rgba(245, 243, 238, 0.25);
+        border-top-color: #E87524;
+        border-radius: 50%;
+        animation: page-loader-spin 0.8s linear infinite;
+      }
+
+      @keyframes page-loader-spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .page-loader-spinner {
+          animation: none;
+        }
+      }
+    </style>
+    <script is:inline>
+      document.documentElement.classList.add('page-loading');
+
+      const loadingTimeout = window.setTimeout(() => {
+        console.error('Page loading timed out; displaying the content.');
+        document.documentElement.classList.remove('page-loading');
+        document.getElementById('page-loader')?.remove();
+      }, 10000);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        window.clearTimeout(loadingTimeout);
+        document.documentElement.classList.remove('page-loading');
+        document.getElementById('page-loader')?.remove();
+      }, { once: true });
+    </script>
   </head>
   <body>
-    <slot />
+    <div id="page-loader" role="status" aria-live="polite">
+      <span class="page-loader-spinner" aria-hidden="true"></span>
+      <span>Cargando...</span>
+    </div>
+    <div id="page-content">
+      <slot />
+    </div>
   </body>
 </html>
