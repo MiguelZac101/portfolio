@@ -3,20 +3,25 @@ interface Props {
     title: string;
     desc: string;
     image: string;
+    imageWidth: number;
+    imageHeight: number;
     demo: string;
     loom_id: string;
     repo: string;
     tech: string[];
 }
-const { title, desc, image, demo, loom_id, repo, tech } = Astro.props;
+const { title, desc, image, imageWidth, imageHeight, demo, loom_id, repo, tech } = Astro.props;
 const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
 ---
 <article class="group portfolio-card project-card border rounded-xl p-6">
     <img
         src={image}
         alt={`Screenshot de ${title}`}
-        class="rounded-lg mb-5 object-cover bg-primary"
+        width={imageWidth}
+        height={imageHeight}
+        class="image-placeholder w-full h-auto rounded-lg mb-5 object-cover"
         loading="lazy"
+        decoding="async"
     />
     <h3 class="text-xl font-semibold mb-2">{title}</h3>
     <p class="text-secondary mb-4 text-sm leading-relaxed">{desc}</p>

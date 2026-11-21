@@ -37,6 +37,11 @@ body {
   color: var(--color-secondary);
 }
 
+.image-placeholder {
+  background-color: #1B304B;
+  color: var(--color-secondary);
+}
+
 .portfolio-card {
   background: transparent;
   color: var(--color-secondary);

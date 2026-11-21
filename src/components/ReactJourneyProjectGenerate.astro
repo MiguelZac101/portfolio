@@ -21,7 +21,11 @@ const { project } = Astro.props;
 		<img
 			src={project.image}
 			alt={project.title}
-			class="object-cover w-full mb-2 transition-opacity rounded-lg group-hover:opacity-80"
+			width={project.imageWidth}
+			height={project.imageHeight}
+			loading="lazy"
+			decoding="async"
+			class="image-placeholder object-cover w-full h-auto mb-2 transition-opacity rounded-lg group-hover:opacity-80"
 		/>		
 	</a>
      )}	

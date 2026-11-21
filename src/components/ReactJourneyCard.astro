@@ -27,7 +27,11 @@ const { item } = Astro.props;
 		<img
 			src={item.image}
 			alt={item.resource_label}
-			class="object-cover w-full mb-2 transition-opacity rounded-lg group-hover:opacity-80"
+			width={item.imageWidth}
+			height={item.imageHeight}
+			loading="lazy"
+			decoding="async"
+			class="image-placeholder object-cover w-full h-auto mb-2 transition-opacity rounded-lg group-hover:opacity-80"
 		/>
 		<p class="text-xs transition-colors text-secondary group-hover:text-accent underline decoration-accent underline-offset-2">
 			{item.resource_label}
