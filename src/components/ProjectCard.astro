@@ -27,21 +27,21 @@ const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
             </span>
         ))}
     </div>
-    <div class="flex gap-5">
+    <div class="flex flex-wrap items-center gap-5">
         {demo && (
             <a href={demo} target="_blank" rel="noopener noreferrer"
-                class="text-secondary text-sm font-medium underline underline-offset-4 decoration-accent hover:text-accent transition-colors">
+                class="bg-accent text-primary text-sm font-semibold px-4 py-2 rounded-md hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors">
                 Live Demo →
             </a>
         )}
         <a href={repo} target="_blank" rel="noopener noreferrer"
-            class="text-secondary text-sm font-medium underline underline-offset-4 decoration-accent hover:text-accent transition-colors">
+            class="text-secondary text-sm font-medium hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors">
             GitHub →
         </a>
         {loom_id && (
             <button
                 data-modal={modalId}
-                class="text-secondary text-sm font-medium underline underline-offset-4 decoration-accent hover:text-accent transition-colors cursor-pointer">
+                class="text-secondary text-sm font-medium hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors cursor-pointer">
                 Preview →
             </button>
         )}
