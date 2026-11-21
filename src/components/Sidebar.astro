@@ -5,7 +5,7 @@ const socials = [
 ];
 ---
 
-<aside class="lg:sticky lg:top-24 lg:h-fit space-y-6 portfolio-sidebar">
+<aside class="space-y-6 lg:sticky lg:top-24 lg:h-fit portfolio-sidebar">
 	<div class="flex justify-center">
 		<img
 			src="/foto.webp"
@@ -16,12 +16,12 @@ const socials = [
 
 	<div>
 		<h1 class="text-3xl font-bold tracking-tight">Miguel Zack</h1>
-		<p class="text-secondary mt-1">
+		<p class="mt-1 text-accent">
 			Web Developer — PHP, Laravel, WordPress & React
 		</p>
 	</div>
 
-	<p class="text-secondary text-sm leading-relaxed">
+	<p class="text-sm leading-relaxed text-secondary">
 		Over 10 years building for the web — from vanilla PHP and CodeIgniter to Laravel projects where I handled client meetings and delivered solutions end to end. I've built WordPress themes, custom ecommerce, and even a CMS from scratch. Now expanding into React and its ecosystem.
 	</p>
 
@@ -32,7 +32,7 @@ const socials = [
 					href={social.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-secondary text-sm underline underline-offset-4 decoration-accent"
+					class="text-sm underline text-secondary underline-offset-4 decoration-accent"
 				>
 					{social.name}
 				</a>
@@ -43,13 +43,13 @@ const socials = [
 	<nav class="flex flex-col gap-2">
 		<a
 			href="#projects"
-			class="text-secondary text-sm underline-offset-4 decoration-accent hover:underline"
+			class="text-sm text-secondary underline-offset-4 decoration-accent hover:underline"
 		>
 			Projects
 		</a>
 		<a
 			href="#react-journey"
-			class="text-secondary text-sm underline-offset-4 decoration-accent hover:underline"
+			class="text-sm text-secondary underline-offset-4 decoration-accent hover:underline"
 		>
 			React Journey
 		</a>
