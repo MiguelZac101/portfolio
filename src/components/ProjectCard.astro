@@ -13,13 +13,13 @@ interface Props {
 const { title, desc, image, imageWidth, imageHeight, demo, loom_id, repo, tech } = Astro.props;
 const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
 ---
-<article class="group portfolio-card project-card border rounded-xl p-6">
+<article class="group portfolio-card project-card rounded-xl p-5 !bg-accent/10">
     <img
         src={image}
         alt={`Screenshot de ${title}`}
         width={imageWidth}
         height={imageHeight}
-        class="image-placeholder w-full h-auto rounded-lg mb-5 object-cover"
+        class="image-placeholder w-full h-auto rounded-lg mb-3 object-cover"
         loading="lazy"
         decoding="async"
     />
