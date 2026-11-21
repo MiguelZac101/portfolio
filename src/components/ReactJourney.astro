@@ -8,19 +8,15 @@ const items: JourneyItem[] = journey;
 
 <section id="react-journey" class="space-y-8">
     <h2 class="text-2xl font-bold tracking-tight">React Journey</h2>
-    
-    <div class="relative">
 
-        <!-- MOBILE: línea a la izquierda, una columna -->
+    <div class="relative">
         <div class="lg:hidden">
             {items.map((item) => (
                 <div class="relative flex gap-4">
-                    <!-- Línea y punto -->
                     <div class="flex flex-col items-center">
-                        <div class="z-10 w-3 h-3 mt-4 bg-white border-2 rounded-full border-zinc-900 ring-2 ring-zinc-700 shrink-0"></div>
-                        <div class="flex-1 w-px mt-1 bg-zinc-800"></div>
+                        <div class="z-10 w-3 h-3 mt-4 bg-accent border-2 rounded-full border-primary ring-2 ring-secondary-muted shrink-0"></div>
+                        <div class="flex-1 w-px mt-1 bg-secondary-muted"></div>
                     </div>
-                    <!-- Card -->
                     <div class="flex-1 pb-10">
                         <ReactJourneyResource item={item} />
                     </div>
@@ -28,41 +24,30 @@ const items: JourneyItem[] = journey;
             ))}
         </div>
 
-        <!-- DESKTOP: alternado izquierda/derecha -->
         <div class="hidden lg:block">
-            <!-- Línea vertical central -->
-            <div class="absolute top-0 bottom-0 w-px -translate-x-1/2 left-1/2 bg-zinc-800"></div>
-
+            <div class="absolute top-0 bottom-0 w-px -translate-x-1/2 left-1/2 bg-secondary-muted"></div>
             <div class="space-y-12">
                 {items.map((item, i) => {
                     const isLeft = i % 2 === 0;
                     return (
                         <div class="relative grid grid-cols-[1fr_auto_1fr] items-start gap-4">
-
-                            <!-- Columna izquierda -->
                             <div>
                                 {isLeft && (
                                     <ReactJourneyResource item={item} />
                                 )}
                             </div>
-
-                            <!-- Punto central -->
                             <div class="flex flex-col items-center pt-4">
-                                <div class="z-10 w-3 h-3 bg-white border-2 rounded-full border-zinc-900 ring-2 ring-zinc-700"></div>
+                                <div class="z-10 w-3 h-3 bg-accent border-2 rounded-full border-primary ring-2 ring-secondary-muted"></div>
                             </div>
-
-                            <!-- Columna derecha -->
                             <div>
                                 {!isLeft && (
                                     <ReactJourneyResource item={item} />
                                 )}
                             </div>
-
                         </div>
                     );
                 })}
             </div>
         </div>
-
     </div>
 </section>

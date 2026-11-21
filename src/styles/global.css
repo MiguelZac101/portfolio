@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-primary: #0B1F3A;
+  --color-secondary: #F5F3EE;
+  --color-accent: #E87524;
+  --color-secondary-muted: #DADDE2;
+  --color-primary-muted: #5F6C7A;
+  --color-primary-faint: #66717E;
+  --rgb-primary: 11 31 58;
+  --rgb-secondary: 245 243 238;
+  --rgb-accent: 232 117 36;
+  --rgb-secondary-muted: 218 221 226;
+  --rgb-primary-muted: 95 108 122;
+  --rgb-primary-faint: 102 113 126;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-primary);
+}
+
+body {
+  margin: 0;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.portfolio-main {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.portfolio-sidebar {
+  color: var(--color-secondary);
+}
+
+.journey-card {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.portfolio-footer {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 1.5rem;
+}
+
+.portfolio-footer a {
+  color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

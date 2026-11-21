@@ -11,18 +11,18 @@ interface Props {
 const { title, desc, image, demo, loom_id, repo, tech } = Astro.props;
 const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
 ---
-<article class="group border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors">
+<article class="group border border-secondary-muted rounded-xl p-6 bg-secondary text-primary hover:border-accent transition-colors">
     <img
         src={image}
         alt={`Screenshot de ${title}`}
-        class="rounded-lg mb-5 object-cover bg-zinc-900"
+        class="rounded-lg mb-5 object-cover bg-secondary-muted"
         loading="lazy"
     />
     <h3 class="text-xl font-semibold mb-2">{title}</h3>
-    <p class="text-zinc-400 mb-4 text-sm leading-relaxed">{desc}</p>
+    <p class="text-primary-muted mb-4 text-sm leading-relaxed">{desc}</p>
     <div class="flex flex-wrap gap-2 mb-5">
         {tech.map((t) => (
-            <span class="text-xs bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-md text-zinc-300">
+            <span class="text-xs bg-secondary-muted border border-secondary-muted px-2.5 py-1 rounded-md text-primary">
                 {t}
             </span>
         ))}
@@ -30,50 +30,42 @@ const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
     <div class="flex gap-5">
         {demo && (
             <a href={demo} target="_blank" rel="noopener noreferrer"
-                class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors">
+                class="text-primary text-sm font-medium underline underline-offset-4 decoration-accent hover:decoration-2 transition-all">
                 Live Demo →
             </a>
         )}
         <a href={repo} target="_blank" rel="noopener noreferrer"
-            class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors">
+            class="text-primary text-sm font-medium underline underline-offset-4 decoration-accent hover:decoration-2 transition-all">
             GitHub →
         </a>
         {loom_id && (
             <button
                 data-modal={modalId}
-                class="text-sm font-medium underline underline-offset-4 hover:text-white transition-colors cursor-pointer">
+                class="text-primary text-sm font-medium underline underline-offset-4 decoration-accent hover:decoration-2 transition-all cursor-pointer">
                 Preview →
             </button>
         )}
     </div>
 </article>
 
-<!-- Modal -->
 {loom_id && (
-    <div id={modalId} class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center !mt-0">
+    <div id={modalId} class="fixed inset-0 bg-primary/95 z-50 hidden items-center justify-center !mt-0">
         <div class="relative w-full max-w-5xl mx-4">
-    <button data-close={modalId} class="absolute -top-8 right-0 text-white text-sm">
-        ✕ Cerrar
-    </button>
-    
-
-    <!-- Contenedor con altura fija -->
-    <div class="relative w-full aspect-video">
-        
-        <!-- Skeleton -->
-        <div class="loading-spinner absolute inset-0 rounded-lg bg-zinc-800 animate-pulse flex items-center justify-center">
-            <div class="w-12 h-12 border-4 border-zinc-600 border-t-white rounded-full animate-spin" />
+            <button data-close={modalId} class="absolute -top-8 right-0 text-secondary text-sm">
+                ✕ Cerrar
+            </button>
+            <div class="relative w-full aspect-video">
+                <div class="loading-spinner absolute inset-0 rounded-lg bg-secondary-muted animate-pulse flex items-center justify-center">
+                    <div class="w-12 h-12 border-4 border-secondary-muted border-t-accent rounded-full animate-spin" />
+                </div>
+                <iframe
+                    data-src={`https://www.loom.com/embed/${loom_id}`}
+                    frameborder="0"
+                    allowfullscreen
+                    class="absolute inset-0 w-full h-full rounded-lg opacity-0 transition-opacity duration-300"
+                />
+            </div>
         </div>
-
-        <!-- Iframe -->
-        <iframe
-            data-src={`https://www.loom.com/embed/${loom_id}`}
-            frameborder="0"
-            allowfullscreen
-            class="absolute inset-0 w-full h-full rounded-lg opacity-0 transition-opacity duration-300"
-        />
-    </div>
-</div>
     </div>
 )}
 
@@ -85,7 +77,7 @@ const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
             const iframe = modal.querySelector('iframe')!
 
             abrirModal(id)
-            
+
             iframe.src = iframe.dataset.src!
             modal.classList.remove('hidden')
             modal.classList.add('flex')
@@ -124,11 +116,9 @@ const modalId = `modal-${title.replace(/\s+/g, '-').toLowerCase()}`;
         modal.classList.remove('hidden')
         modal.classList.add('flex')
 
-        // mostrar spinner, ocultar iframe
         spinner.classList.remove('hidden')
         iframe.classList.add('opacity-0')
 
-        // cuando carga el iframe
         iframe.addEventListener('load', () => {
             spinner.classList.add('hidden')
             iframe.classList.remove('opacity-0')
