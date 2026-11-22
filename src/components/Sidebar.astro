@@ -1,9 +1,10 @@
 ---
 interface Props {
+	developerName: string;
 	developerDescription: string;
 }
 
-const { developerDescription } = Astro.props;
+const { developerName, developerDescription } = Astro.props;
 const socials = [
 	{ name: "GitHub", url: "https://github.com/MiguelZac101" },
 	{ name: "Email", url: "mailto:maqzac@yahoo.es" },
@@ -14,7 +15,7 @@ const socials = [
 	<div class="flex justify-center">
 		<img
 			src="/foto.webp"
-			alt="Miguel Zack"
+			alt={developerName}
 			width="300"
 			height="300"
 			loading="eager"
@@ -24,7 +25,7 @@ const socials = [
 	</div>
 
 	<div>
-		<h1 class="text-3xl font-bold tracking-tight">Miguel Zack</h1>
+		<h1 class="text-3xl font-bold tracking-tight">{developerName}</h1>
 		<p class="mt-1 text-accent">
 			{developerDescription}
 		</p>

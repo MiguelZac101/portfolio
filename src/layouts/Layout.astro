@@ -4,10 +4,11 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  developerName: string;
   developerDescription: string;
 }
 
-const { title, description, developerDescription } = Astro.props;
+const { title, description, developerName, developerDescription } = Astro.props;
 ---
 
 <!doctype html>
@@ -141,7 +142,7 @@ const { title, description, developerDescription } = Astro.props;
   <body>
     <div id="page-loader" role="status" aria-label="Cargando página">
       <div class="page-loader-panel page-loader-top" aria-hidden="true">
-        <span class="page-loader-name">Miguel Zack</span>
+        <span class="page-loader-name">{developerName}</span>
       </div>
       <div class="page-loader-panel page-loader-bottom" aria-hidden="true">
         <span class="page-loader-description">{developerDescription}</span>
