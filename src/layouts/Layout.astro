@@ -56,7 +56,7 @@ const { title, description, developerName, developerDescription } = Astro.props;
         flex-direction: column;
         background: #0B1F3A;
         text-align: center;
-        transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+        transition: transform 1.3s cubic-bezier(0.65, 0, 0.35, 1);
         will-change: transform;
       }
 
@@ -85,6 +85,21 @@ const { title, description, developerName, developerDescription } = Astro.props;
         line-height: 1.5;
       }
 
+      .page-loader-name,
+      .page-loader-description {
+        display: block;
+        transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+        will-change: transform;
+      }
+
+      html.page-text-moving .page-loader-name {
+        transform: translateX(var(--page-loader-text-shift, 0px));
+      }
+
+      html.page-text-moving .page-loader-description {
+        transform: translateX(var(--page-loader-text-shift, 0px));
+      }
+
       html.page-opening .page-loader-top {
         transform: translateY(-100%);
       }
@@ -98,6 +113,7 @@ const { title, description, developerName, developerDescription } = Astro.props;
       document.documentElement.classList.add('page-loading');
       const loadingStarted = Date.now();
       let pageOpening = false;
+      let textExitTimeout;
 
       const loadingTimeout = window.setTimeout(() => {
         console.error('Page loading timed out; displaying the content.');
@@ -111,6 +127,7 @@ const { title, description, developerName, developerDescription } = Astro.props;
         const loader = document.getElementById('page-loader');
         const topPanel = loader?.querySelector('.page-loader-top');
         const finish = () => {
+          window.clearTimeout(textExitTimeout);
           document.documentElement.classList.remove('page-loading', 'page-opening');
           loader?.remove();
         };
@@ -120,15 +137,43 @@ const { title, description, developerName, developerDescription } = Astro.props;
           return;
         }
 
-        const cleanupTimeout = window.setTimeout(finish, 1800);
-        topPanel.addEventListener('transitionend', (event) => {
-          if (event.target === topPanel && event.propertyName === 'transform') {
-            window.clearTimeout(cleanupTimeout);
-            finish();
+        const openPanels = () => {
+          window.clearTimeout(textExitTimeout);
+          const cleanupTimeout = window.setTimeout(finish, 1500);
+          topPanel.addEventListener('transitionend', (event) => {
+            if (event.target === topPanel && event.propertyName === 'transform') {
+              window.clearTimeout(cleanupTimeout);
+              finish();
+            }
+          }, { once: true });
+          topPanel.getBoundingClientRect();
+          document.documentElement.classList.add('page-opening');
+        };
+
+        const topText = loader.querySelector('.page-loader-name');
+        const bottomText = loader.querySelector('.page-loader-description');
+        if (!topText || !bottomText) {
+          openPanels();
+          return;
+        }
+
+        const viewportWidth = document.documentElement.clientWidth;
+        const textEdgeMargin = Math.min(24, viewportWidth / 2);
+        topText.style.setProperty(
+          '--page-loader-text-shift',
+          `${textEdgeMargin - topText.getBoundingClientRect().left}px`
+        );
+        bottomText.style.setProperty(
+          '--page-loader-text-shift',
+          `${viewportWidth - textEdgeMargin - bottomText.getBoundingClientRect().right}px`
+        );
+        topText.addEventListener('transitionend', (event) => {
+          if (event.target === topText && event.propertyName === 'transform') {
+            openPanels();
           }
-        });
-        topPanel.getBoundingClientRect();
-        document.documentElement.classList.add('page-opening');
+        }, { once: true });
+        textExitTimeout = window.setTimeout(openPanels, 1000);
+        document.documentElement.classList.add('page-text-moving');
       }
 
       window.addEventListener('load', () => {
