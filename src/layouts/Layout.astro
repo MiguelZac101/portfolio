@@ -4,9 +4,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  developerDescription: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, developerDescription } = Astro.props;
 ---
 
 <!doctype html>
@@ -143,7 +144,7 @@ const { title, description } = Astro.props;
         <span class="page-loader-name">Miguel Zack</span>
       </div>
       <div class="page-loader-panel page-loader-bottom" aria-hidden="true">
-        <span class="page-loader-description">Web Developer — PHP, Laravel, WordPress &amp; React</span>
+        <span class="page-loader-description">{developerDescription}</span>
       </div>
     </div>
     <div id="page-content">
