@@ -150,6 +150,11 @@ const { title, description, developerName, developerDescription } = Astro.props;
           document.documentElement.classList.add('page-opening');
         };
 
+        if (window.matchMedia('(max-width: 767px)').matches) {
+          openPanels();
+          return;
+        }
+
         const topText = loader.querySelector('.page-loader-name');
         const bottomText = loader.querySelector('.page-loader-description');
         if (!topText || !bottomText) {
